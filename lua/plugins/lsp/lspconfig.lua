@@ -85,6 +85,23 @@ return {
           capabilities = capabilities,
         })
       end,
+      ["graphql"] = function()
+        -- configure graphql language server
+        lspconfig["graphql"].setup({
+          capabilities = capabilities,
+          filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
+        })
+      end,
+      ["sqlls"] = function()
+        lspconfig["sqlls"].setup({
+          capabilities = capabilities,
+        })
+      end,
+      ["angularls"] = function()
+        lspconfig["angularls"].setup({
+          capabilities = capabilities,
+        })
+      end,
       ["omnisharp"] = function()
         lspconfig["omnisharp"].setup({
           capabilities = capabilities,
@@ -99,13 +116,6 @@ return {
             analyze_open_documents_only = false,
           },
           filetypes = { "cs", "vb", "csproj", "sln", "slnx", "props", "csx", "targets" },
-        })
-      end,
-      ["graphql"] = function()
-        -- configure graphql language server
-        lspconfig["graphql"].setup({
-          capabilities = capabilities,
-          filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
         })
       end,
       ["emmet_ls"] = function()
