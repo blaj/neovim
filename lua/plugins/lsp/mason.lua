@@ -40,6 +40,7 @@ return {
         "angularls",
         "sqlls",
         "omnisharp",
+        "phpactor",
       },
     })
 

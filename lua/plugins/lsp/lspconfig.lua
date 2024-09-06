@@ -118,6 +118,12 @@ return {
           filetypes = { "cs", "vb", "csproj", "sln", "slnx", "props", "csx", "targets" },
         })
       end,
+      ["phpactor"] = function()
+        lspconfig["phpactor"].setup({
+          capabilities = capabilities,
+          cmd = { "phpactor", "language-server" },
+        })
+      end,
       ["emmet_ls"] = function()
         -- configure emmet language server
         lspconfig["emmet_ls"].setup({
