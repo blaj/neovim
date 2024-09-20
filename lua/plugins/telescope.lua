@@ -3,22 +3,22 @@ return {
   branch = "0.1.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
-    { 
-      "nvim-telescope/telescope-fzf-native.nvim", 
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
-      -- config = function()
-      --   require("telescope").load_extension("fzf")
-      -- end
+      config = function()
+        require("telescope").load_extension("fzf")
+      end,
     },
     "nvim-tree/nvim-web-devicons",
     "folke/todo-comments.nvim",
   },
   opts = {
     defaults = {
-      path_display = {shorten = 3},
+      path_display = { shorten = 3 },
       prompt_prefix = "> ",
     },
-    extensions_list = {"fzf", "terms", "themes"},
+    extensions_list = { "fzf", "terms", "themes" },
   },
   config = function()
     local telescope = require("telescope")
@@ -54,11 +54,14 @@ return {
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
 
-    keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
-    keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
-    keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
-    keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
+    keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Fuzzy find files in cwd" })
+    -- keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
+    keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<CR>", { desc = "Find string in cwd" })
+    keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<CR>", { desc = "Find string under cursor in cwd" })
     keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+    keymap.set("n", "<leader>fr", "<cmd>Telescope lsp_references<CR>", { desc = "Find references" })
+    keymap.set("n", "<leader>fd", "<cmd>Telescope lsp_definitions<CR>", { desc = "Find definition" })
+    keymap.set("n", "<leader>fi", "<cmd>Telescope lsp_implementations<CR>", { desc = "Find implementation" })
+    keymap.set("n", "<leader>fb", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Find in current buffer" })
   end,
 }
-

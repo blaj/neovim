@@ -1,10 +1,17 @@
 return {
-  "xiantang/darcula-dark.nvim",
+  "Mofiqul/vscode.nvim",
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
   },
   priority = 1000,
   config = function()
-    vim.cmd("colorscheme darcula-dark")
+    local scheme = require("vscode")
+
+    scheme.setup({
+      style = "dark",
+    })
+
+    scheme.load()
+    -- vim.cmd("colorscheme onedark")
   end,
 }

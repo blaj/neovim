@@ -3,6 +3,8 @@ return {
   config = function()
     local notify = require("notify")
 
-    notify.setup({})
+    notify.setup({
+      render = "default",
+    })
   end,
 }
