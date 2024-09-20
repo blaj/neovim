@@ -15,4 +15,3 @@ return {
     keymap.set("x", "s", substitute.visual, { desc = "Substitute in visual mode" })
   end,
 }
-

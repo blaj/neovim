@@ -12,6 +12,6 @@ return {
 
     keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" })
     keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" })
-    keymap.set("n", "<leader>wse", "<cmd>SessionSearch<CR>", { desc = "Open session picker" })
+    keymap.set("n", "<leader>wp", "<cmd>SessionSearch<CR>", { desc = "Open session picker" })
   end,
 }
