@@ -18,6 +18,17 @@ return {
 
     local keymap = vim.keymap -- for conciseness
 
+    local os_utils = require("utils.os-utils")
+
+    local get_cmd = function()
+      local cmd = "/mason/bin/omnisharp"
+      if os_utils.get_name() == "Windows" then
+        cmd = "/mason/bin/omnisharp.cmd"
+      end
+
+      return { vim.fn.stdpath("data") .. cmd }
+    end
+
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
@@ -48,10 +59,10 @@ return {
         keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
 
         opts.desc = "Show buffer diagnostics"
-        keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+        keymap.set("n", "<leader>Db", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
 
         opts.desc = "Show line diagnostics"
-        keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
+        keymap.set("n", "<leader>Dl", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
         opts.desc = "Go to previous diagnostic"
         keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
@@ -103,9 +114,9 @@ return {
       ["omnisharp"] = function()
         lspconfig["omnisharp"].setup({
           capabilities = capabilities,
-          cmd = { vim.fn.stdpath("data") .. "/mason/bin/omnisharp.cmd" },
+          cmd = get_cmd(),
           settings = {
-            enable_ms_build_load_projects_on_demand = false,
+            enable_ms_build_load_projects_on_demand = true,
             enable_editorconfig_support = true,
             enable_roslyn_analysers = true,
             enable_import_completion = true,
