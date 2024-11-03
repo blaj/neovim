@@ -3,14 +3,24 @@ return {
   name = "catppuccin",
   priority = 1000,
   config = function()
-    local scheme = require("catppuccin")
+    local catppuccin = require("catppuccin")
 
-    scheme.setup({
-      style = "macchiato",
+    catppuccin.setup({
+      flavour = "macchiato",
       default_integrations = true,
+      integrations = {
+        notify = true,
+        aerial = true,
+        --barbecue = true,
+        gitsigns = true,
+        which_key = true,
+        nvim_surround = true,
+        overseer = true,
+        mason = true,
+        lsp_trouble = true
+      }
     })
-
-    -- scheme.load()
+    
     vim.cmd("colorscheme catppuccin")
   end,
 }
