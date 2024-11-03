@@ -6,7 +6,8 @@ return {
     local catppuccin = require("catppuccin")
 
     catppuccin.setup({
-      flavour = "mocha",
+      flavour = "macchiato",
+      default_integrations = true,
       integrations = {
         notify = true,
         aerial = true,
@@ -19,7 +20,7 @@ return {
         lsp_trouble = true
       }
     })
-
+    
     vim.cmd("colorscheme catppuccin")
   end,
 }
