@@ -49,12 +49,29 @@ return {
       },
     }
 
+    local function diff_source()
+      local gitsigns = vim.b.gitsigns_status_dict
+      if gitsigns then
+        return {
+          added = gitsigns.added,
+          modified = gitsigns.changed,
+          removed = gitsigns.removed,
+        }
+      end
+    end
+
+    local function window()
+      return vim.api.nvim_win_get_number(0)
+    end
+
     -- configure lualine with modified theme
     lualine.setup({
       options = {
         theme = my_lualine_theme,
       },
       sections = {
+        lualine_a = { window },
+        lualine_b = { { "diff", source = diff_source } },
         lualine_x = {
           {
             lazy_status.updates,
@@ -69,4 +86,3 @@ return {
     })
   end,
 }
-
