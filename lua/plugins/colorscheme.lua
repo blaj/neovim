@@ -1,17 +1,16 @@
 return {
-  "Mofiqul/vscode.nvim",
-  dependencies = {
-    "nvim-treesitter/nvim-treesitter",
-  },
+  "catppuccin/nvim",
+  name = "catppuccin",
   priority = 1000,
   config = function()
-    local scheme = require("vscode")
+    local scheme = require("catppuccin")
 
     scheme.setup({
-      style = "dark",
+      style = "macchiato",
+      default_integrations = true,
     })
 
-    scheme.load()
-    -- vim.cmd("colorscheme onedark")
+    -- scheme.load()
+    vim.cmd("colorscheme catppuccin")
   end,
 }
