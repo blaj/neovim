@@ -35,3 +35,12 @@ opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal windows to the bottom
 
 opt.whichwrap = "<>,hl[]"
+
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    update_in_insert = true,
+    underline = true,
+    severity_sort = false,
+    float = true,
+  })
